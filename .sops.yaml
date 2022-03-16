@@ -2,9 +2,11 @@
 creation_rules:
   - path_regex: provision/.*\.sops\.ya?ml
     unencrypted_regex: "^(kind)$"
+    gcp_kms: projects/suchdevops-k3s-sops/locations/global/keyRings/sops/cryptoKeys/sops-key
     age: >-
       age1tulnrs2pgkrmgawn9n7lkf85wx45y5lsuj0mejhrymch6st34dhs69jc3e
   - path_regex: cluster/.*\.ya?ml
     encrypted_regex: "^(data|stringData)$"
+    gcp_kms: projects/suchdevops-k3s-sops/locations/global/keyRings/sops/cryptoKeys/sops-key
     age: >-
       age1tulnrs2pgkrmgawn9n7lkf85wx45y5lsuj0mejhrymch6st34dhs69jc3e
