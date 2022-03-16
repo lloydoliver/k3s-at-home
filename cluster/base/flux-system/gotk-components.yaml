@@ -4099,8 +4099,8 @@ spec:
         - mountPath: /tmp
           name: temp
         - mountPath: /tmp/flux/suchdevops-k3s-sops-862e4dca651c.json
-          name: gcp-auth
-          subPath: suchdevops-k3s-sops-862e4dca651c
+          name: flux-gcp-sa-secret
+          subPath: suchdevops-k3s-sops-862e4dca651c.json
       nodeSelector:
         kubernetes.io/os: linux
       securityContext:
@@ -4110,9 +4110,9 @@ spec:
       volumes:
       - emptyDir: {}
         name: temp
-      - name: suchdevops-k3s-sops-862e4dca651c
+      - name: flux-gcp-sa-secret
         secret:
-          secretName: gcp-auth
+          secretName: flux-gcp-sa-secret
 ---
 apiVersion: apps/v1
 kind: Deployment
