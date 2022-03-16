@@ -4055,6 +4055,8 @@ spec:
         - --log-encoding=json
         - --enable-leader-election
         env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /tmp/flux/suchdevops-k3s-sops-862e4dca651c.json
         - name: RUNTIME_NAMESPACE
           valueFrom:
             fieldRef:
@@ -4096,6 +4098,9 @@ spec:
         volumeMounts:
         - mountPath: /tmp
           name: temp
+        - mountPath: /tmp/flux/suchdevops-k3s-sops-862e4dca651c.json
+          name: gcp-auth
+          subPath: suchdevops-k3s-sops-862e4dca651c
       nodeSelector:
         kubernetes.io/os: linux
       securityContext:
@@ -4105,6 +4110,9 @@ spec:
       volumes:
       - emptyDir: {}
         name: temp
+      - name: suchdevops-k3s-sops-862e4dca651c
+        secret:
+          secretName: gcp-auth
 ---
 apiVersion: apps/v1
 kind: Deployment
