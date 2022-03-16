@@ -26,7 +26,6 @@ spec:
       storageMinimalAvailablePercentage: "10"
     ingress:
       enabled: true
-      ingressClassName: "traefik"
       host: "longhorn.${SECRET_DOMAIN}"
       tlsSecret: "longhorn-tls"
       tls: true
