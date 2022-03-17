@@ -23,7 +23,7 @@ spec:
         app: unbound
     spec:
       containers:
-        - image: mvance/unbound-rpi
+        - image: mvance/unbound
           name: unbound
           securityContext:
             privileged: false
