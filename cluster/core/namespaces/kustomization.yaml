@@ -5,3 +5,4 @@ resources:
   - longhorn-system.yaml
   - metallb-system.yaml
   - networking.yaml
+  - pihole.yaml
