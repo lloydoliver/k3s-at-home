@@ -1,0 +1,133 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: pihole
+  namespace: pihole
+spec:
+  releaseName: pihole
+  chart:
+    spec:
+      # renovate: registryUrl=https://mojo2600.github.io/pihole-kubernetes/
+      chart: pihole
+      version: 2.5.8
+      sourceRef:
+        kind: HelmRepository
+        name: mojo2600
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  test:
+    enable: false
+  values:
+    admin:
+      existingSecret: "pihole-secrets"
+      passwordKey: "password"
+
+    ingress:
+      enabled: true
+      path: /
+      hosts:
+        - pihole.${SECRET_DOMAIN}
+      tls:
+        - secretName: "pihole-tls"
+          hosts:
+            - pihole.${SECRET_DOMAIN}
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
+        kubernetes.io/tls-acme: "true"
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        hajimari.io/enable: "true"
+        hajimari.io/icon: "pi-hole"
+
+    serviceDhcp:
+      enabled: false
+
+    serviceDns:
+      type: LoadBalancer
+      externalTrafficPolicy: Local
+      loadBalancerIP: "${SVC_PIHOLE_ADDR}"
+      annotations:
+        metallb.universe.tf/allow-shared-ip: pihole-svc
+
+    serviceWeb:
+      type: LoadBalancer
+      externalTrafficPolicy: Local
+      loadBalancerIP: "${SVC_PIHOLE_ADDR}"
+      annotations:
+        metallb.universe.tf/allow-shared-ip: pihole-svc
+
+    virtualHost: "pihole.${SECRET_DOMAIN}"
+
+    persistentVolumeClaim:
+      enabled: true
+      existingClaim: "pihole-config"
+
+    DNS1: "${SVC_UNBOUND_ADDR}"
+    DNS2: "${SVC_UNBOUND_ADDR}"
+
+    dnsmasq:
+      customDnsEntries:
+        - address=/.${SECRET_DOMAIN}/${SVC_TRAEFIK_ADDR}
+
+    adlists:
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+      - http://sysctl.org/cameleon/hosts
+      - https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
+      - https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
+      - https://blocklist.site/app/dl/tracking
+      - https://blocklist.site/app/dl/malware
+      - https://blocklist.site/app/dl/ads
+      - https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV.txt
+      - https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/android-tracking.txt
+      - https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/data/add.2o7Net/hosts
+      - https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-blocklist.txt
+      - https://v.firebog.net/hosts/Easyprivacy.txt
+      - https://v.firebog.net/hosts/Prigent-Ads.txt
+
+    whitelist:
+      - ichnaea.netflix.com
+      - nrdp.nccp.netflix.com
+      - collector-medium.lightstep.com
+      - android.clients.google.com
+      - clients1.google.com
+      - clients2.google.com
+      - clients3.google.com
+      - clients4.google.com
+      - clients5.google.com
+      - clients6.google.com
+      - cdn.cloudflare.net
+      - ctldl.windowsupdate.com
+      - googleapis.com
+      - www.msftncsi.com
+      - sls.update.microsoft.com.akadns.net
+      - fe3.delivery.dsp.mp.microsoft.com.nsatc.net
+      - tlu.dl.delivery.mp.microsoft.com
+      - spclient.wg.spotify.com
+      - apresolve.spotify.com
+      - api-tv.spotify.com
+      - gfwsl.geforce.com
+
+    regex:
+      - ^(.+[-.])??adse?rv(er?|ice)?s?[0-9][-.]
+      - ^analytics?[-.]
+      - ^banners?[-.]
+      - ^count(ers?)?[0-9][-.] ^pixels?[-.]
+      - ^stat(s|istics)?[0-9][-.]
+      - ^telemetry[-.]
+      - ^track(ers?|ing)?[0-9]*[-.]
+      - ^traff(ic)?[-.]
+      - ^adim(age|g)s?[0-9][-.]
+      - ^adtrack(er|ing)?[0-9][-.]
+      - ^advert(s|is(ing|ements?))?[0-9][-_.]
+      - ^aff(iliat(es?|ion))?[-.]
+      - ^(.+[-.])??m?ad[sxv]?[0-9][-.]
+
+    podDnsConfig:
+      nameservers:
+        - 127.0.0.1
+        - 9.9.9.9
