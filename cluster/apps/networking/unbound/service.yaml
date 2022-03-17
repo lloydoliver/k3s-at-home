@@ -1,0 +1,42 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: unbound-tcp
+  namespace: unbound
+  annotations:
+    metallb.universe.tf/address-pool: default
+    metallb.universe.tf/allow-shared-ip: unbound
+spec:
+  externalTrafficPolicy: Local
+  selector:
+    app: unbound
+  ports:
+    - protocol: TCP
+      port: 53
+      name: unboundtcp
+      targetPort: 53
+  type: LoadBalancer
+  loadBalancerIP: ${SVC_UNBOUND_ADDR}
+  sessionAffinity: ClientIP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: unbound-udp
+  namespace: unbound
+  annotations:
+    metallb.universe.tf/address-pool: default
+    metallb.universe.tf/allow-shared-ip: unbound
+spec:
+  externalTrafficPolicy: Local
+  selector:
+    app: unbound
+  ports:
+    - protocol: UDP
+      port: 53
+      name: unboundudp
+      targetPort: 53
+  type: LoadBalancer
+  loadBalancerIP: ${SVC_UNBOUND_ADDR}
+  sessionAffinity: ClientIP

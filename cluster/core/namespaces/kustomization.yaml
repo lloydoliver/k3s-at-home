@@ -6,3 +6,4 @@ resources:
   - metallb-system.yaml
   - networking.yaml
   - pihole.yaml
+  - unbound.yaml
