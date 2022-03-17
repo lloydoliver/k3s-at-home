@@ -35,6 +35,11 @@ spec:
     image:
       repository: ghcr.io/k8s-at-home/node-red
       tag: v2.2.2
+    # Have to set this because Longhorn creates PVC with uid/gid 0!!!
+    podSecurityContext:
+      runAsUser: 0
+      runAsGroup: 0
+      fsGroup: 0
     env:
       TZ: "${TIMEZONE}"
       NODE_RED_ENABLE_PROJECTS: "true"
