@@ -24,6 +24,8 @@ spec:
       defaultReplicaCount: 3
       createDefaultDiskLabeledNodes: true
       storageMinimalAvailablePercentage: "10"
+      backupTargetCredentialSecret: longhorn-aws-creds
+      backupTarget: "${SECRET_LONGHORN_BACKUP_TARGET}"
     ingress:
       enabled: true
       host: "longhorn.${SECRET_DOMAIN}"
