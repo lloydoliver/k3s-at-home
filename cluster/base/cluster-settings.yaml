@@ -5,9 +5,5 @@ metadata:
   name: cluster-settings
   namespace: flux-system
 data:
-  TIMEZONE: "Europe/London"
   METALLB_LB_RANGE: 10.0.10.150-10.0.10.200
   METALLB_TRAEFIK_ADDR: 10.0.10.150
-  SVC_TRAEFIK_ADDR: 10.0.10.150
-  SVC_PIHOLE_ADDR: 10.0.10.151
-  SVC_UNBOUND_ADDR: 10.0.10.152
