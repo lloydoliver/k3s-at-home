@@ -69,10 +69,6 @@ spec:
     DNS1: "${SVC_UNBOUND_ADDR}"
     DNS2: "${SVC_UNBOUND_ADDR}"
 
-    dnsmasq:
-      customDnsEntries:
-        - address=/.${SECRET_DOMAIN}/${SVC_TRAEFIK_ADDR}
-
     adlists:
       - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
       - http://sysctl.org/cameleon/hosts
