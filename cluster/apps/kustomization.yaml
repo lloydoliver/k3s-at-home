@@ -6,4 +6,3 @@ resources:
   - kube-system
   - networking
   - system-upgrade
-  - home
