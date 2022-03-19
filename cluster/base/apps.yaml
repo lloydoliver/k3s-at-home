@@ -16,7 +16,7 @@ spec:
   decryption:
     provider: sops
     secretRef:
-      name: sops-age
+      name: flux-gcp-sa-secret
   postBuild:
     substitute: {}
     substituteFrom:
