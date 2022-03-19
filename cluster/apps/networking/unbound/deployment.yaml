@@ -23,8 +23,10 @@ spec:
         app: unbound
     spec:
       containers:
-        - image: mvance/unbound
+        - image: mvance/unbound-rpi
           name: unbound
           securityContext:
             privileged: false
           resources: {}
+      nodeSelector:
+        arch: arm
