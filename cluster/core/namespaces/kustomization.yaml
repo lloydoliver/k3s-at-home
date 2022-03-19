@@ -7,4 +7,5 @@ resources:
   - networking.yaml
   - node-red.yaml
   - pihole.yaml
+  - rook-ceph
   - unbound.yaml
