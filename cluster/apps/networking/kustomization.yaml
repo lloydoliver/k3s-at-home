@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - cloudflare-ddns
   - traefik
+  - pihole
   - unbound

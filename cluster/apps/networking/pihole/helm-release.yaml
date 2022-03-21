@@ -22,6 +22,7 @@ spec:
   test:
     enable: false
   values:
+    replicaCount: 3
     admin:
       existingSecret: "pihole-secrets"
       passwordKey: "password"
@@ -48,6 +49,7 @@ spec:
 
     serviceDns:
       type: LoadBalancer
+      mixedService: True
       externalTrafficPolicy: Local
       loadBalancerIP: "${SVC_PIHOLE_ADDR}"
       annotations:
@@ -63,8 +65,13 @@ spec:
     virtualHost: "pihole.${SECRET_DOMAIN}"
 
     persistentVolumeClaim:
-      enabled: true
-      existingClaim: "pihole-config"
+      enabled: false
+
+    nodeSelector:
+      arch: arm
+
+    extraEnvVars:
+      TZ: ${TIMEZONE}
 
     DNS1: "${SVC_UNBOUND_ADDR}"
     DNS2: "${SVC_UNBOUND_ADDR}"
