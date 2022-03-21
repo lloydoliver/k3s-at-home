@@ -9,8 +9,8 @@ stringData:
     HASS_MQTT_USERNAME: ENC[AES256_GCM,data:GJllsjbvjAUvOpA=,iv:/MTcH/Bpu+AVE0itSTFH5C4eFAjZbcHjfrZ+wVPt1oA=,tag:4V8cyUWTPf3kRUBvQS23gA==,type:str]
     HASS_LIFE360_USERNAME: ENC[AES256_GCM,data:CAxsOALTELnuT2hF7OHEbpaYUaA9Frbc,iv:G+Ya5WPOzkYUhff/NUxO3vvzOL+mKKu4JrFQ1qXUTGg=,tag:Z8QVvyAPRlAndKMP0dc1CA==,type:str]
     HASS_LIFE360_PASSWORD: ENC[AES256_GCM,data:lUSvlJhAEtg=,iv:3dBzTCiZ9EpW9asW24K1UBY3CjRMU+EtX38HbmUPkrk=,tag:JR27/vmeQuDSjlHFx3QaSw==,type:str]
-    HASS_LATITUDE: ENC[AES256_GCM,data:5SMbstgrdfkPsw==,iv:oMTP+4jDm7W3CFbAKKAr4yoNZt7ZigLvdLwW/LaR7DA=,tag:vKfKf0REEhJDkmrmqxGGcQ==,type:float]
-    HASS_LONGTITUDE: ENC[AES256_GCM,data:oNtkMySrDHkPYA==,iv:vh8UHyMWY68P4Rp7EvtSgnIMZS3ltmT/TUSqnd6fnBI=,tag:cEZr00aO5aFOl6PKb5bXjg==,type:float]
+    HASS_LATITUDE: ENC[AES256_GCM,data:ykp4ei27dh/qCQ==,iv:1+tTZ+NE89JUTgbTsdaMbSCTVRqpviT2R6h0SHKAIa0=,tag:91cyaMvJneMzlfgxpae3Vw==,type:str]
+    HASS_LONGTITUDE: ENC[AES256_GCM,data:tfrNjJD/YHh2JA==,iv:ODrnW/kkXD1aJ6OGHyxhg25cEeSA3x3vE2S/erbHueY=,tag:BE2yrAxUu1aBJYnNIGnEgQ==,type:str]
 sops:
     kms: []
     gcp_kms:
@@ -29,8 +29,8 @@ sops:
             Z3ZCZ1JBOWt6ZEc0WVVIMjc1N0N2S0EKjcsjctdAlH/O2zjdH27MF84jgdO8qVa3
             O+83XxnPQ/WUTxYXhr2DSzB/SIsX3PFR1pv04Vck28IbExpg4ngRFw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-03-21T20:58:22Z"
-    mac: ENC[AES256_GCM,data:URW/ZdPLHu16RQuIVtwBpGv/z0rpMj4QZQT7wiDx9hVCDhQ3/+JxPjZRmbWe2Pk+2eH11pSyPN0/wqs/Dk5BVSejs1PCBQIGa/OS8fHDyXY0Ww61oqcMUcUj3yZN9NGk9OcBepYiqbme22fgg88ZjbDq1FuBTABxEkBZ6udS7+g=,iv:c3POSmm7ucv/oT0p3iOi9yWvLONRP6+mht71CJyPSPY=,tag:ArrTxH5+AeYo9+VCxFweIA==,type:str]
+    lastmodified: "2022-03-21T21:12:54Z"
+    mac: ENC[AES256_GCM,data:fY10uoHzYm9eNUCIL97lStFBwNgnkNAtVDuAn0xv38ji6/ocTeX/qjWUdzwaPsd+CQ97Zi/U2m9Txpr6FqVWjrDvQow5+CzzYNEY5oB9PjF3AnHNwRBPSHsO2hLIxARw//NS5DRJqRJj1rYH4KALiclqDlnftDsdzp1eIPharwQ=,iv:D0IsPOjkX9oH20L/3KE+eX1mXq9vkFBGLSX5q+Y8rfg=,tag:WmvKGshHw22yIHTcM/4z2A==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.7.2
