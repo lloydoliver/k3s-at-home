@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Secret
 metadata:
     name: home-assistant
-    namespace: home
+    namespace: home-assistant
 stringData:
     HASS_MQTT_PASSWORD: ENC[AES256_GCM,data:5iA50At8CFTJMBNLOLPWNSoufxB4HST2cmoL9OoCqCRAS2wcKRt3JsAy0t2kHjYTWRX0dYhiVrdS3alQ6ppg8ban41tXZJP+15kx7lSpTryhZkqQT3eHSMqXas8AnCBpNVN9neJqZP4h3to33VmyiCtFWERB+9J5fqf7ENG1Bi4=,iv:iJASsd2GP37wkZfcfbUSwOrIwGlehvAns6THmPLK7bY=,tag:C0LJdSmY0wKI62EAxla9JQ==,type:str]
     HASS_MQTT_USERNAME: ENC[AES256_GCM,data:GJllsjbvjAUvOpA=,iv:/MTcH/Bpu+AVE0itSTFH5C4eFAjZbcHjfrZ+wVPt1oA=,tag:4V8cyUWTPf3kRUBvQS23gA==,type:str]
@@ -29,8 +29,8 @@ sops:
             Z3ZCZ1JBOWt6ZEc0WVVIMjc1N0N2S0EKjcsjctdAlH/O2zjdH27MF84jgdO8qVa3
             O+83XxnPQ/WUTxYXhr2DSzB/SIsX3PFR1pv04Vck28IbExpg4ngRFw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-03-21T21:12:54Z"
-    mac: ENC[AES256_GCM,data:fY10uoHzYm9eNUCIL97lStFBwNgnkNAtVDuAn0xv38ji6/ocTeX/qjWUdzwaPsd+CQ97Zi/U2m9Txpr6FqVWjrDvQow5+CzzYNEY5oB9PjF3AnHNwRBPSHsO2hLIxARw//NS5DRJqRJj1rYH4KALiclqDlnftDsdzp1eIPharwQ=,iv:D0IsPOjkX9oH20L/3KE+eX1mXq9vkFBGLSX5q+Y8rfg=,tag:WmvKGshHw22yIHTcM/4z2A==,type:str]
+    lastmodified: "2022-03-21T21:15:36Z"
+    mac: ENC[AES256_GCM,data:d+qM8EbolwE2MfqxOezh/l73zfWCXToR6mWnfrVF8PN90jKYnyw0VpryejxoIBM/lNDbN2Pre+2o7vu7liNKFbZdLUQHAGO7ZldrtBPsYi89KJ7NgmeY+Ly48FSjFv88CasQ6QGJ1qry3IABWyNxkHYxkZqEWqg5di0taR6nojg=,iv:5IQqROfZ2BMaphcOEFB8eYJQo1ZaqzRN6jwKTslVzO0=,tag:FVgh2pWj3J/3EDVDeo09IA==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.7.2
