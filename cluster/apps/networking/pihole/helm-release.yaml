@@ -22,7 +22,7 @@ spec:
   test:
     enable: false
   values:
-    replicaCount: 3
+    replicaCount: 1
     admin:
       existingSecret: "pihole-secrets"
       passwordKey: "password"
