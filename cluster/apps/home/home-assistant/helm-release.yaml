@@ -1,0 +1,100 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: home-assistant
+  namespace: home-assistant
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: home-assistant
+      version: 12.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: homeassistant/home-assistant
+      tag: 2022.3.5
+    env:
+      TZ: "${TIMEZONE}"
+    hostNetwork: true
+    dnsPolicy: ClusterFirstWithHostNet
+    persistence:
+      config:
+        enabled: true
+        existingClaim: homeassistant-config
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: "${SVC_HOME_ASSISTANT_ADDR}"
+        externalTrafficPolicy: Local
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "home-assistant"
+          hajimari.io/appName: "Home Assistant"
+        hosts:
+          - host: "hassio.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: "hassio-tls"
+            hosts:
+              - "hassio.${SECRET_DOMAIN}"
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
+    addons:
+      codeserver:
+        enabled: true
+        image:
+          repository: ghcr.io/k8s-at-home/code-server
+          tag: v4.1.0
+        env:
+          TZ: "${TIMEZONE}"
+        git:
+          deployKeySecret: code-server
+        workingDir: "/config"
+        args:
+          - --auth
+          - "none"
+          - --user-data-dir
+          - "/config/.vscode"
+          - --extensions-dir
+          - "/config/.vscode"
+        ingress:
+          enabled: true
+          ingressClassName: "traefik"
+          annotations:
+            cert-manager.io/cluster-issuer: "letsencrypt-production"
+            traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          hosts:
+            - host: "hass-config.${SECRET_DOMAIN}"
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - secretName: "hass-config-tls"
+              hosts:
+                - "hass-config.${SECRET_DOMAIN}"
+        volumeMounts:
+          - name: config
+            mountPath: /config
+    resources:
+      limits:
+        memory: 500Mi
+      requests:
+        cpu: 35m
+        memory: 150Mi
