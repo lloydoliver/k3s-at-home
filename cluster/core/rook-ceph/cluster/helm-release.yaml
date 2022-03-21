@@ -32,11 +32,11 @@ spec:
         annotations:
           kubernetes.io/ingress.class: "traefik"
         host:
-          name: &host "rook.${SECRET_DOMAIN}"
-          path: "/"
+          name: rook.${SECRET_DOMAIN}
+          path: /
         tls:
           - hosts:
-              - *host
+              - ceph.${SECRET_DOMAIN}
     cephClusterSpec:
       placement:
         all:
