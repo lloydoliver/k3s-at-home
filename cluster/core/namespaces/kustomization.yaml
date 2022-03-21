@@ -5,6 +5,7 @@ resources:
   - cert-manager.yaml
   - metallb-system.yaml
   - networking.yaml
+  - nginx.yaml
   - node-red.yaml
   - pihole.yaml
   - rook-ceph.yaml
