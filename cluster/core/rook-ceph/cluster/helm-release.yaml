@@ -36,7 +36,7 @@ spec:
           path: /
         tls:
           - hosts:
-              - ceph.${SECRET_DOMAIN}
+              - rook.${SECRET_DOMAIN}
     cephClusterSpec:
       placement:
         all:
