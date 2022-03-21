@@ -40,7 +40,7 @@ spec:
         kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
         kubernetes.io/tls-acme: "true"
-        cert-manager.io/cluster-issuer: letsencrypt-prod
+        cert-manager.io/cluster-issuer: letsencrypt-production
         hajimari.io/enable: "true"
         hajimari.io/icon: "pi-hole"
 
