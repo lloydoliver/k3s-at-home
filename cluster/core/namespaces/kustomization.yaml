@@ -8,5 +8,6 @@ resources:
   - metallb-system.yaml
   - networking.yaml
   - node-red.yaml
+  - mqtt.yaml
   - pihole.yaml
   - unbound.yaml
