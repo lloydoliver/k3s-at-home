@@ -106,6 +106,7 @@ spec:
       - clients6.google.com
       - cdn.cloudflare.net
       - ctldl.windowsupdate.com
+      - gdlp01.c-wss.com
       - googleapis.com
       - www.msftncsi.com
       - sls.update.microsoft.com.akadns.net
