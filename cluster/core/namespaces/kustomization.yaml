@@ -11,3 +11,4 @@ resources:
   - mqtt.yaml
   - pihole.yaml
   - unbound.yaml
+  - vaultwarden.yaml
