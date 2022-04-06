@@ -7,11 +7,11 @@
 </br>
 </br>
 
-[![k3s](https://img.shields.io/badge/v1.23.4+k3s1-brightgreen?style=for-the-badge&logo=kubernetes&logoColor=white)](https://k3s.io/)
+[![k3s](https://img.shields.io/badge/v1.23.5+k3s1-brightgreen?style=for-the-badge&logo=kubernetes&logoColor=white)](https://k3s.io/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge)](https://github.com/pre-commit/pre-commit)
 [![renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?style=for-the-badge&logo=renovatebot&logoColor=white)](https://github.com/renovatebot/renovate)
 [![sops](https://img.shields.io/badge/SOPS-encrypted-brightgreen?style=for-the-badge&logo=mozilla&logoColor=white)](https://github.com/mozilla/sops)
-![GitHub last commit](https://img.shields.io/github/last-commit/lloydoliver/k8s-at-home?style=for-the-badge)  
+![GitHub last commit](https://img.shields.io/github/last-commit/lloydoliver/k3s-at-home?style=for-the-badge)  
 
 [Flux](https://github.com/fluxcd/flux2) watches this repo and makes changes to my home Kubernetes cluster when changes are committed to the ./cluster folder.  
 [Renovate](https://github.com/renovatebot/renovate) also watches this Git repository and creates pull requests when application updates are available.  
@@ -22,16 +22,15 @@
 ## k3s Nodes
 
 - 3x Ubuntu 20.04 VMs (masters)
-- 1x Ubuntu 20.04 VM (amd64 worker)
 - 3x Raspberry Pi 4B 8GB (arm64 worker)
--- Ubuntu 20.04
+
 --
 
 ## Tools used
 
 [K3s](k3s.io) - Lightweight Kubernetes.  
 [Flux](https://github.com/fluxcd/flux2) - Operator that manages your k8s cluster based on your Git repository.  
-[SOPS](https://github.com/mozilla/sops) - Encrypts k8s secrets with GnuPG.  
+[SOPS](https://github.com/mozilla/sops) - Encrypts k8s secrets with GCP KMS and AGE.  
 [Pre-commit](https://github.com/pre-commit/pre-commit) - Runs checks pre `git commit`.  
 
 ## Apps/Components deployed
