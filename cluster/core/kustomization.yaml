@@ -6,4 +6,5 @@ resources:
   - kube-system
   - longhorn
   - metallb-system
+  - nfs
   - system-upgrade

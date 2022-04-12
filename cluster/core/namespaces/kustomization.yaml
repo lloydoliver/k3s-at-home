@@ -6,9 +6,10 @@ resources:
   - home-assistant.yaml
   - longhorn-system.yaml
   - metallb-system.yaml
-  - networking.yaml
-  - node-red.yaml
   - mqtt.yaml
+  - networking.yaml
+  - nfs
+  - node-red.yaml
   - pihole.yaml
   - unbound.yaml
   - vaultwarden.yaml
